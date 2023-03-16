@@ -21,7 +21,7 @@ logging.basicConfig(filename='./ssloxy.log', level=logging.INFO, filemode='a',
                     format='%(threadName)s  %(asctime)s : %(levelname)s : %(message)s')
 
 
-TEST_ENV        = False                  # самодельные сертификаты
+TEST_ENV        = False                 # самодельные сертификаты
 
 HOST, PORT      = "localhost", 8443     # openssl s_client -connect localhost:8443 / ncat --ssl localhost 8443
 BHOST, BPORT    = "localhost", 8000     # ncat -lk localhost 8000
