@@ -24,8 +24,9 @@ options:
 
 1. Тестовый сертификат
 ```
-openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout ./cert/server.key -out ./cert/server.crt
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout ./cert/ssloxy.key -out ./cert/ssloxy.crt
 ```
+Если тестовый клиент это браузер, то нужно добавить `ssloxy.crt` в доверенные сертификаты (вручную, либо приняв предупреждение браузера о самоподписанном сертификате - зависит от браузера и его настроек)
 
 2. Запуск прокси
 ```

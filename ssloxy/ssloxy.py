@@ -72,7 +72,7 @@ def main_thread():
 
     if TEST_ENV:
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-        context.load_cert_chain('./cert/server.crt', './cert/server.key')
+        context.load_cert_chain('./cert/ssloxy.crt', './cert/ssloxy.key')
     else:
         context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
     
@@ -84,7 +84,11 @@ def main_thread():
         with context.wrap_socket(sock, server_side=True) as ssock:
 
             while True:
-                sconn, addr = ssock.accept()
+                try:
+                    sconn, addr = ssock.accept()
+                except ssl.SSLError as e:
+                    continue
+                
 
                 logging.info(f"{addr} connected")
 
